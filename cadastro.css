@@ -1,8 +1,53 @@
-/* Rset das configurações do navegador */
+.pagina-cadastro form {
+    display: grid;
+    gap: 10px;
+    max-width: 540px;
+    margin: 0 auto;
+}
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border box;
+.pagina-cadastro label {
+    margin-top: 8px;
+    color: var(--verde-escuro);
+    font-size: 0.95rem;
+    font-weight: 700;
+}
 
+.pagina-cadastro input {
+    width: 100%;
+    min-height: 48px;
+    padding: 11px 14px;
+    border: 1px solid #cbd9ce;
+    border-radius: 5px;
+    background: #fbfdfb;
+    color: var(--tinta);
+    font: inherit;
+}
+
+.pagina-cadastro input:focus {
+    border-color: var(--verde);
+    outline: 3px solid rgba(8, 116, 67, 0.15);
+}
+
+.pagina-cadastro button {
+    min-height: 48px;
+    margin-top: 18px;
+    padding: 12px 20px;
+    border: 0;
+    border-bottom: 4px solid #d6a91e;
+    border-radius: 5px;
+    background: var(--amarelo);
+    color: var(--verde-escuro);
+    cursor: pointer;
+    font: inherit;
+    font-weight: 800;
+    transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.pagina-cadastro button:hover {
+    background: #ffda65;
+    transform: translateY(-1px);
+}
+
+.pagina-cadastro button:active {
+    transform: translateY(1px);
 }

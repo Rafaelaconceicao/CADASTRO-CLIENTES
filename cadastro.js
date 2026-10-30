@@ -1,32 +1,31 @@
-function funcaoCadastrarCliente(){
-    // identifica os campos no HTML e pega os valores.
-    const nome= document.getElementById('nome').value
-    const email= document.getElementById('email').value
-    const telefone= document.getElementById('telefone').value
+function funcaoCadastrarCliente() {
+    const formulario = document.getElementById('formulario-cadastro')
+    const nome = formulario.elements.nome.value.trim()
+    const email = formulario.elements.email.value.trim()
+    const telefone = formulario.elements.telefone.value.trim()
 
-    // Verifica se os campos estão vazios.
-    // Mostra mensagem de alerta no navegador.
-    if(!nome || !email || !telefone)
-        alert('Por favor, preencha os campos.')
+    if (!nome || !email || !telefone) {
+        alert('Por favor, preencha todos os campos.')
         return
+    }
 
+    const novoCliente = {nome, email, telefone}
+    let listaClientes
+
+    try {
+        listaClientes = JSON.parse(localStorage.getItem('clientes') || '[]')
+        if (!Array.isArray(listaClientes)) listaClientes = []
+    } catch {
+        listaClientes = []
+    }
+
+    listaClientes.push(novoCliente)
+    localStorage.setItem('clientes', JSON.stringify(listaClientes))
+    alert('Cliente cadastrado com sucesso!')
+    formulario.reset()
 }
 
-
-// cria uma variável com os dados do cliente.
-const novoCleiente= {nome, email, telefone}
-
-// Pega a lista de clientes já existente ou cria uma vazia.
-let listaClientes= JSON.parse(localStorage.getitem('clientes')) || []
-
-// Adiciona um novo cliente na lista.
-listaClientes.push(novoCliente)
-
-// Salva no localStorage ( Armazenamento local no navegador)
-localStorage.setitem('clientes', JSON.stringify(listaClientes))
-
-// Mensagem do navegador confirmando salvamento
-alert ('Cliente cadastrado com sucesso!')
-
-//Limpa o forumulário
-document.getElementById('formulario-cadastro').reset()
+document.getElementById('formulario-cadastro').addEventListener('submit', (event) => {
+    event.preventDefault()
+    funcaoCadastrarCliente()
+})

@@ -1,17 +1,132 @@
-/* Rset das configurações do navegador */
+:root {
+    color-scheme: light;
+    --verde: #087443;
+    --verde-escuro: #075333;
+    --amarelo: #f5c542;
+    --azul: #27669a;
+    --tinta: #19372c;
+    --texto-suave: #61766c;
+    --fundo: #f2f7f1;
+    --branco: #ffffff;
+    font-family: "Trebuchet MS", "Avenir Next", sans-serif;
+    color: var(--tinta);
+    background: var(--fundo);
+}
 
-*{
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
     margin: 0;
-    padding: 0;
-    box-sizing: border box;
-
+    background-color: var(--fundo);
+    background-image:
+        radial-gradient(rgba(8, 116, 67, 0.09) 0.7px, transparent 0.7px),
+        linear-gradient(135deg, #f8faf5, #edf5ed);
+    background-size: 18px 18px, auto;
 }
 
-nav{
-
+.menu-navegacao {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 20px;
+    padding: 16px 20px;
+    border-bottom: 4px solid var(--amarelo);
+    background: var(--verde-escuro);
 }
 
-.pagina-principal nav{
+.menu-navegacao a {
+    padding: 8px 4px;
+    color: var(--branco);
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color 160ms ease, border-color 160ms ease;
+}
 
-    
+.menu-navegacao a:hover,
+.menu-navegacao a:focus-visible {
+    color: var(--amarelo);
+    border-color: var(--amarelo);
+}
+
+.pagina-cadastro .menu-navegacao a[href="cadastro.html"],
+.pagina-clientes .menu-navegacao a[href="clientes.html"] {
+    color: var(--amarelo);
+    border-color: var(--amarelo);
+}
+
+.conteudo-principal {
+    width: min(760px, calc(100% - 32px));
+    margin: clamp(32px, 7vh, 68px) auto;
+    padding: clamp(24px, 5vw, 48px);
+    border: 1px solid rgba(7, 83, 51, 0.12);
+    border-top: 5px solid var(--verde);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 18px 44px rgba(25, 55, 44, 0.08);
+}
+
+.conteudo-principal > img {
+    display: block;
+    width: 112px;
+    height: 112px;
+    margin: 0 auto 20px;
+    object-fit: contain;
+}
+
+.conteudo-principal h1,
+.conteudo-principal h2 {
+    margin: 0 0 24px;
+    color: var(--verde-escuro);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.pagina-principal .conteudo-principal {
+    text-align: center;
+}
+
+.pagina-principal .conteudo-principal h1 {
+    margin-bottom: 14px;
+}
+
+.pagina-principal .conteudo-principal p {
+    max-width: 46ch;
+    margin: 0 auto;
+    color: var(--texto-suave);
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+:focus-visible {
+    outline: 3px solid var(--azul);
+    outline-offset: 3px;
+}
+
+@media (max-width: 520px) {
+    .menu-navegacao {
+        gap: 4px 14px;
+        padding: 12px 10px;
+    }
+
+    .conteudo-principal h1,
+    .conteudo-principal h2 {
+        font-size: 1.7rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
 }
